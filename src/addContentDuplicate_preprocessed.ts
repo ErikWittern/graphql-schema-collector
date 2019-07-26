@@ -25,7 +25,7 @@ iterate(repoData => {
     // Check if merged content exists
     if (repoData.schemas[i].merged && repoData.schemas[i].merged.validSchema) {
       const astString = JSON.stringify(graphql.buildASTSchema(graphql.parse(repoData.schemas[i].merged.mergedContent)))
- 
+
       if (seenAsts.has(astString)) {
         repoData.schemas[i].merged.contentDuplicate = true
       } else {
@@ -34,7 +34,7 @@ iterate(repoData => {
       }
     } else if (repoData.schemas[i].validSchema) {
       const astString = JSON.stringify(graphql.buildASTSchema(graphql.parse(repoData.schemas[i].content)))
- 
+
       if (seenAsts.has(astString)) {
         repoData.schemas[i].contentDuplicate = true
       } else {
@@ -45,5 +45,5 @@ iterate(repoData => {
   }
   
   return repoData
-})
+}, undefined, undefined, false)
 

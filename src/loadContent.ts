@@ -24,10 +24,10 @@ import * as path from 'path'
 
 dotenv.config()
 
-async function main(dataPath: string, beginAt: number) {
-  const paths = glob.sync(path.resolve(dataPath, '*.json'))
+async function main(beginAt: number) {
+  const paths = glob.sync(path.resolve('.', 'schemas', '*.json'))
 
-  for (let i = beginAt; i < paths.length - 1; i++) {
+  for (let i = beginAt; i < paths.length; i++) {
     try {
       const path = paths[i]
       console.log(`Process ${path} (${i} out of ${paths.length})...`)
@@ -74,15 +74,10 @@ async function loadContent(data) {
 }
 
 if (require.main === module) {
-  const dataPath = process.argv[2]
-  if (typeof dataPath !== 'string' || dataPath === '') {
-    console.error(`Please provide <path-to-raw> argument.`)
-    process.exit(-1)
-  }
-  const beginAt = Number(process.argv[3])
+  const beginAt = Number(process.argv[2])
   if (typeof beginAt !== 'number') {
     console.error(`Please provide <begin-at> argument.`)
     process.exit(-1)
   }
-  main(dataPath, beginAt)
+  main(beginAt)
 }
