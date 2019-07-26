@@ -1,0 +1,39 @@
+{
+  "name": "graphql-schema-collector",
+  "version": "1.0.0",
+  "description": "Scripts to collect GraphQL schema definition files from GitHub.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "load-metadata": "npm run build && node lib/loadMetadata.js",
+    "load-content": "npm run build && node lib/loadContent.js",
+    "preprocess": "npm run build && node lib/addGithubDuplicate.js && node lib/addType.js && node lib/addContainsQueryType.js",
+    "refactor": "npm run build && node lib/refactorData.js",
+    "preprocess-refactored": "npm run build && node lib/mergeSchemas.js && node lib/addValidSchema.js && node lib/addContentDuplicate_preprocessed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibm/graphql-schema-collector.git"
+  },
+  "keywords": [
+    "graphql",
+    "data-collection"
+  ],
+  "author": "Erik Wittern, Alan Cha, James C. Davis, Guillaume Baudart, Louis Mandel",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/ibm/graphql-schema-collector/issues"
+  },
+  "homepage": "https://github.com/ibm/graphql-schema-collector#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "glob": "^7.1.4",
+    "graphql": "^14.4.2"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/graphql": "^14.2.3",
+    "typescript": "^3.5.3"
+  }
+}
