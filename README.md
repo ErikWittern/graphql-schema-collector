@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/199018913.svg)](https://zenodo.org/badge/latestdoi/199018913)
+
 # GraphQL Schema Collector
 
 Scripts to mine GitHub for GraphQL schemas, defined in the Schema Definition Language. Details on the mining and preprocessing as well as on an analysis of thousands of mined schemas can be found in our [2019 ICSOC paper]().
